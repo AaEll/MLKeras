@@ -1,6 +1,6 @@
 from random import random
 from scipy.stats import norm
-
+import numpy as np
 
 def foo(X):
     print (X)
@@ -123,6 +123,11 @@ def inverse_uniform(x,xmin,xmax):
 # Useful statistics functions
 def Linear_GaussianNoise(x,slope,intercept,noise_std_dev):
     return (x*slope+intercept+norm.rvs(scale = noise_std_dev))
+
+def Sin_GaussianNoise(x,slope,intercept,noise_std_dev):
+    return (np.sin(x*slope+slope)+intercept+norm.rvs(scale = noise_std_dev))
+def Quad_GaussianNoise(x,slope,intercept,noise_std_dev):
+    return (slope*(x-100)**2+intercept+norm.rvs(scale = noise_std_dev))
 
 def Calculate_ConfIntv(sum1,sumsq,n,confidence = .95):
     variance = (sumsq - sum1**2)/n
